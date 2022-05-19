@@ -23,9 +23,21 @@ jobs:
     steps:
 
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
-          ref: master
+          ref: self_action
+
+      - name: add rtl8812b
+        uses: actions/checkout@v3
+        with:
+          repository: xu373297464/RTL8812B
+          path: package/kernel/
+
+      - name: add rtl8812b makefile
+        uses: actions/checkout@v3
+        with:
+          repository: xu373297464/RTL88x2BU-OpenWRT
+          path: package/kernel/
 
       - name: Space cleanup
         env:
@@ -40,13 +52,6 @@ jobs:
           sudo -E apt-get clean
 
           df -h
-          
-      - name: add rtl8812b
-        run: |
-          git clone https://github.com/xu373297464/RTL8812B
-          git clone https://github.com/xu373297464/RTL88x2BU-OpenWRT
-          mv RTL8812B package/kernel/
-          mv RTL88x2BU-OpenWRT package/kernel/
           
       - name: Update feeds
         run: |
