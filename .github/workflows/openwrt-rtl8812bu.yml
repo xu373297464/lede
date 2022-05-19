@@ -27,18 +27,18 @@ jobs:
         with:
           ref: master
 
-      - name: Checkout rtl8812bu
-        uses: actions/checkout@v3
-        with:
-          repository: xu373297464/RTL8812BU
-          path: package/kernel/RTL8812BU
-
-      - name: Checkout rlt8812bu makefile
-        uses: actions/checkout@v3
-        with:
-          repository: xu373297464/RTL88x2BU-OpenWRT
-          path: package/kernel/RTL88x2BU-OpenWRT
-
+#      - name: Checkout rtl8812bu
+#        uses: actions/checkout@v3
+#        with:
+#          repository: xu373297464/RTL8812BU
+#          path: package/kernel/RTL8812BU
+#
+#      - name: Checkout rlt8812bu makefile
+#        uses: actions/checkout@v3
+#        with:
+#          repository: xu373297464/RTL88x2BU-OpenWRT
+#          path: package/kernel/RTL88x2BU-OpenWRT
+#
 #      - name: Space cleanup
 #        env:
 #          DEBIAN_FRONTEND: noninteractive
@@ -133,7 +133,6 @@ jobs:
       - name: Upload release asset
         uses: svenstaro/upload-release-action@v2
         with:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: ./bin/targets/*
           asset_name: rtl8812.txt
           tag: ${{ github.ref }}
