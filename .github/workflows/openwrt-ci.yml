@@ -27,12 +27,6 @@ jobs:
         with:
           ref: self_action
 
-      - name: add rtl8812b
-        uses: actions/checkout@v3
-        with:
-          repository: xu373297464/RTL8812BU
-          path: package/kernel/RTL8812BU
-
       - name: add rtl8812b makefile
         uses: actions/checkout@v3
         with:
@@ -111,7 +105,7 @@ jobs:
       - name: Upload release asset
         uses: svenstaro/upload-release-action@v2
         with:
-          repo_token: ${{ secrets.YOURTOKEN }}
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: ./artifact/firmware/*
           tag: ${{ github.ref }}
           file_glob: true
