@@ -30,14 +30,14 @@ jobs:
       - name: add rtl8812b
         uses: actions/checkout@v3
         with:
-          repository: xu373297464/RTL8812B
-          path: package/kernel/
+          repository: xu373297464/RTL8812BU
+          path: package/kernel/RTL8812BU
 
       - name: add rtl8812b makefile
         uses: actions/checkout@v3
         with:
           repository: xu373297464/RTL88x2BU-OpenWRT
-          path: package/kernel/
+          path: package/kernel/RTL88x2BU-OpenWRT
 
       - name: Space cleanup
         env:
