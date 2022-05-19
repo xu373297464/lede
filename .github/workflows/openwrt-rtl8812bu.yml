@@ -130,11 +130,23 @@ jobs:
           path: ./bin/targets/
   
 
-      - name: Upload release asset
-        uses: svenstaro/upload-release-action@v2
+ #     - name: Upload release asset
+ #       uses: svenstaro/upload-release-action@v2
+ #       with:
+ #         repo_token: ${{ secrets.RELEASE_TOKEN }}
+ #         file: ./bin/targets/*
+ #         asset_name: rtl8812.txt
+ #         tag: ${{ github.ref }}
+ #         file_glob: true
+ 
+ 
+      - name: Upload release asset1
+        uses: "marvinpinto/action-automatic-releases@latest"
         with:
-          repo_token: ${{ secrets.RELEASE_TOKEN }}
-          file: ./bin/targets/*
-          asset_name: rtl8812.txt
-          tag: ${{ github.ref }}
-          file_glob: true
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          automatic_release_tag: ${{ github.ref }}
+          title: ${{ github.ref }}
+          prerelease: true
+          files: |
+            ./bin/targets/*
+
