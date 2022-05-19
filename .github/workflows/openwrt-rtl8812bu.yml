@@ -133,8 +133,8 @@ jobs:
       - name: Upload release asset
         uses: svenstaro/upload-release-action@v2
         with:
-          repo_token: ${{ secrets.YOURTOKEN }}
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: ./bin/targets/*
-          assert_name: rtl8812.txt
+          asset_name: rtl8812.txt
           tag: ${{ github.ref }}
           file_glob: true
