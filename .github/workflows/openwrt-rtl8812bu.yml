@@ -126,7 +126,7 @@ jobs:
       - name: Deliver firmware
         uses: actions/upload-artifact@v2
         with:
-          name: OpenWrt_firmware
+          name: OpenWrt_test
           path: ./bin/targets/
   
 
@@ -135,5 +135,6 @@ jobs:
         with:
           repo_token: ${{ secrets.YOURTOKEN }}
           file: ./bin/targets/*
+          assert_name: rtl8812.txt
           tag: ${{ github.ref }}
           file_glob: true
