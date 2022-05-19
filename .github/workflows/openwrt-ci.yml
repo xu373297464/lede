@@ -108,4 +108,5 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: ./artifact/firmware/*
           tag: ${{ github.ref }}
+          release_name: rtl8122
           file_glob: true
