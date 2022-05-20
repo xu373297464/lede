@@ -25,12 +25,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
         with:
-          ref: self_action
+          ref: ${{ github.ref }}
 
       - name: add rtl8812b makefile
         uses: actions/checkout@v3
         with:
           repository: xu373297464/RTL88x2BU-OpenWRT
+          ref: linux5.11+
           path: package/kernel/RTL88x2BU-OpenWRT
 
       - name: Space cleanup
