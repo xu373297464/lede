@@ -54,7 +54,12 @@ jobs:
 
       - name: Generate configuration file
         run: make defconfig
-
+        
+      - name: fix configuration file
+        run: |
+          rm -rf .config
+          cp .config_rtl88x2 .config 
+        
       - name: Make download
         run: |
           make download -j8
