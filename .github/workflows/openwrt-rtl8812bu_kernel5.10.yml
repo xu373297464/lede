@@ -58,7 +58,11 @@ jobs:
           sed -i "s#IMG_PREFIX:=#IMG_PREFIX:=k5-10_rtl88x2bu_#" include/image.mk
           
       - name: Generate configuration file
-        run: make defconfig
+        run: |
+          make defconfig
+          echo "---------starting to print .config------------"
+          cat .config
+          echo "---------ending  print .config------------"
         
 #      - name: fix configuration file
 #        run: |
