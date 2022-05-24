@@ -5,7 +5,7 @@
 #
 # Copyright (C) 2020 KFERMercer
 #
-name: OpenWrt-CI 5.4 immortal_rtl88x2bu
+name: OpenWrt-CI 5.10 immortal_rtl88x2bu
 
 on:
   workflow_dispatch:
@@ -14,7 +14,7 @@ jobs:
 
   build_openwrt:
 
-    name: OpenWrt-CI 5.4 immortal_rtl88x2bu
+    name: OpenWrt-CI 5.10 immortal_rtl88x2bu
 
     runs-on: ubuntu-latest
 
@@ -51,9 +51,11 @@ jobs:
           ./scripts/feeds update -a
           ./scripts/feeds install -a
         
-      - name: degrade kernel to 5.4
+      - name: degrade kernel to 5.10
         run: |
-          sed -i  "s#KERNEL_PATCHVER:=.*#KERNEL_PATCHVER:=5.4#" target/linux/x86/Makefile          
+          sed -i  "s#KERNEL_PATCHVER:=.*#KERNEL_PATCHVER:=5.10#" target/linux/x86/Makefile          
+          sed -i  "s#KERNEL_TESTING_PATCHVER:=.*#KERNEL_TESTING_PATCHVER:=5.10#" target/linux/x86/Makefile   
+          sed -i "s#IMG_PREFIX:=#IMG_PREFIX:=k5-10_rtl88x2bu_#" include/image.mk
           
       - name: Generate configuration file
         run: make defconfig
@@ -112,5 +114,5 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: ./artifact/firmware/*
           tag: ${{ github.ref }}
-          release_name: immortal_rtl88x2bu_k5.4
+          release_name: immortal_rtl88x2bu_k5.10
           file_glob: true
